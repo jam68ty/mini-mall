@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 
+
 var index = require('./routes/index');
 var account = require('./routes/account');
 var cart = require('./routes/cart');
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://localhost/test')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

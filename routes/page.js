@@ -41,37 +41,38 @@ router.post('/add', function(req, res){
         message: 'something went wrong'
       });
     } else {
-      res.redirect('/pages')
+      res.redirect('/pages/seller')
     }
   });
 })
 
 
-// // Get Edit Form
-// router.get('/edit/:id', function(req,res){
-//   Post.findById(req.params.id, function(err, post){
-//     res.render('pages/editPost',{
-//       post: post
-//     })
-//   })
-// })
+// Get Edit Form
+router.get('/edit/:id', function(req,res){
+  Item.findById(req.params.id, function(err, pages){
+    res.render('pages/editPost',{
+      pages: pages
+    })
+  })
+})
 
-// //Post Edit Route
-// router.post('/edit/:id', function(req, res){
-//   let post = {}
-//   post.title = req.body.title
-//   post.body = req.body.body
+//Item Edit Route
+router.post('/edit/:id', function(req, res){
+  let item = {}
+  item.productName = req.body.productName
+  item.price = req.body.price
+  item.amount = req.body.amount
 
-//   let query = { _id: req.params.id }
-//   Post.update(query, post, function(err){
-//     if(err){
-//       console.log(err)
-//       return
-//     } else {
-//       res.redirect('/pages')
-//     }
-//   })
-// })
+  let query = { _id: req.params.id }
+  Item.update(query, pages, function(err){
+    if(err){
+      console.log(err)
+      return
+    } else {
+      res.redirect('/pages')
+    }
+  })
+})
 
 // // DELETE Route
 // router.delete('/delete/:id', function(req, res){

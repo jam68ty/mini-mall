@@ -6,11 +6,15 @@
 <form method='POST', action='/pages/edit/<%= Item._id%>'>
 <div id="form-group">
   <label>Name</label>
-  <input name='title' type="text" class="form-control" value="<%= Item.products %>">
+  <input name='title' type="text" class="form-control" value="<%= Item.productName %>">
 </div>
 <div id="form-group">
   <label>Price</label>
-  <input name='body' type="text" class="form-control" value="<%= Item.Price %>">
+  <input name='body' type="number" class="form-control" value="<%= Item.price %>">
+</div>
+<div id="form-group">
+  <label>Amount</label>
+  <input name='body' type="number" class="form-control" value="<%= Item.amount %>">
 </div>
 <br>
 <input value='Submit' type="Submit" class="btn btn-primary">

@@ -11,20 +11,29 @@
           </tr>
         </thead>
         <tbody>
+          <% pages.forEach(function(Item){ %>
           <tr>
-            <th scope="row">1</th>
-            <td>Skirts</td>
-            <td>20</td>
-            <td>350</td>
+            <th scope="row"><%= Item._id %></th>
+            <td><%= Item.productName %></td>
+            <td><%= Item.price %></td>
+            <td><%= Item.amount %></td>
             <td>
-                <button type="button" class="btn btn-outline-success">Edit</button>
-                <button type="button" class="btn btn-outline-danger">Delete</button>
+                <button type="button" class="btn btn-outline-success"  onclick="location.href='/pages/edit/<%= Item._id%>'">Edit</button>
+                <button type="button" class="btn btn-outline-danger" class="deletePost" data-id="<%= Item.id%>" >Delete</button>
             </td>
           </tr>
+          <% }) %> 
           
         </tbody>
-      </table>
+      </table> 
+
+     
     
+     
+    
+        
+        
+      
 
 </div>
 <a id="addItem" href="#" class="float">
@@ -37,18 +46,18 @@
     <div class="modal-content">
     <span class="close" >&times;</span>
 
-    <form>
+    <form method='POST', action='/pages/add'>
         <div class="form-group">
-          <label for="name">Product Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter Your Product Name">
+          <label>Product Name</label>
+          <input type="text" class="form-control" name="productName" placeholder="Enter Your Product Name">
         </div>
         <div class="form-group">
           <label for="amount">Amount</label>
-          <input type="number" class="form-control" id="amount" placeholder="Enter Amount">
+          <input type="number" class="form-control" name="amount" placeholder="Enter Amount">
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter Price">
+            <input type="number" class="form-control" name="price" placeholder="Enter Price">
           </div>
           <br>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -57,7 +66,36 @@
         
         
       </form>
+
+    </div>
     </div>
 
 </div>
+<script>
+	// Get the modal
+	var modal = document.getElementById("myModal");
+	
+	// Get the button that opens the modal
+	var btn = document.getElementById("addItem");
+	
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+	
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+	
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+		modal.style.display = "none";
+	  }
+	}
+	</script>
 <%- include ../partials/footer %>
