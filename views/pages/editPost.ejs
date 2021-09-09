@@ -1,0 +1,21 @@
+  <%- include ../partials/header %>
+
+<a href="/pages" class="btn btn-lg btn-default">Back To Index</a>
+<h1>Update Item</h1>
+
+<form method='POST', action='/pages/edit/<%= Item._id%>'>
+<div id="form-group">
+  <label>Name</label>
+  <input name='title' type="text" class="form-control" value="<%= Item.products %>">
+</div>
+<div id="form-group">
+  <label>Price</label>
+  <input name='body' type="text" class="form-control" value="<%= Item.Price %>">
+</div>
+<br>
+<input value='Submit' type="Submit" class="btn btn-primary">
+
+</form>
+
+
+  <%- include ../partials/footer %>

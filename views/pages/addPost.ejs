@@ -1,0 +1,29 @@
+  <%- include ../partials/header %>
+
+<a href="/pages" class="btn btn-lg btn-default">Back To Index</a>
+<h1>Add Post</h1>
+
+<form method='POST', action='/pages/add'>
+<div id="form-group">
+  <label>ID</label>
+  <input name='id' type="text" class="form-control">
+</div>
+<div id="form-group">
+  <label>Product Name</label>
+  <input name='productName' type="text" class="form-control">
+</div>
+<div id="form-group">
+  <label>Price</label>
+  <input name='price' type="number" class="form-control">
+</div>
+<div id="form-group">
+  <label>Amount</label>
+  <input name='amount' type="number" class="form-control">
+</div>
+<br>
+<input value='Submit' type="Submit" class="btn btn-primary">
+
+</form>
+
+
+  <%- include ../partials/footer %>

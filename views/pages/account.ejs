@@ -1,0 +1,190 @@
+<%- include ../partials/header %>
+<script type="text/javascript">
+    function changeFrameHeight(){
+   var ifm= document.getElementById("myframe");
+   ifm.height=document.documentElement.clientHeight-56;
+}
+window.onresize=function(){ changeFrameHeight();}
+$(function(){changeFrameHeight();});
+   </script>
+<style>
+   /* Profile container */
+   .profile {
+   margin: 20px 0;
+   }
+
+   /* Profile sidebar */
+   .profile-sidebar {
+   padding: 20px 0 10px 0;
+   background: #fff;
+   }
+
+   .profile-userpic img {
+   float: none;
+   margin: 0 auto;
+   width: 50%;
+   height: 50%;
+   -webkit-border-radius: 50% !important;
+   -moz-border-radius: 50% !important;
+   border-radius: 50% !important;
+   }
+
+   .profile-usertitle {
+   text-align: center;
+   margin-top: 20px;
+   }
+
+   .profile-usertitle-name {
+   color: #052905;
+   font-size: 16px;
+   font-weight: 600;
+   margin-bottom: 7px;
+   }
+
+   
+
+   .profile-userbuttons {
+   text-align: center;
+   margin-top: 10px;
+   }
+
+   .profile-userbuttons .btn {
+   text-transform: uppercase;
+   font-size: 11px;
+   font-weight: 600;
+   padding: 6px 15px;
+   margin-right: 5px;
+   }
+
+   .profile-userbuttons .btn:last-child {
+   margin-right: 0px;
+   }
+       
+   .profile-usermenu {
+   margin-top: 30px;
+   }
+
+   .profile-usermenu ul li {
+   border-bottom: 1px solid #f0f4f7;
+   }
+
+   .profile-usermenu ul li:last-child {
+   border-bottom: none;
+   }
+
+   .profile-usermenu ul li a {
+   color: #5bd15b;
+   font-size: 14px;
+   font-weight: 400;
+   }
+
+   .profile-usermenu ul li a i {
+   margin-right: 8px;
+   font-size: 14px;
+   }
+
+   .profile-usermenu ul li a:hover {
+   background-color: #fafcfd;
+   color: #5bd15b;
+   }
+
+   .profile-usermenu ul li.active {
+   border-bottom: none;
+   }
+
+   .profile-usermenu ul li.active a {
+   color: #247924;
+   background-color: #f6f9fb;
+   border-left: 2px solid #247924;
+   margin-left: -2px;
+   }
+
+   /* Profile Content */
+   .profile-content {
+   padding: 20px;
+   background: #fff;
+   min-height: 460px;
+   }
+
+</style>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-userpic">
+						<img src="https://image.flaticon.com/icons/png/512/747/747376.png" class="img-responsive" alt="">
+					</div>
+					<div class="profile-usertitle-name">
+						User Name
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul style="list-style-type: none;">
+						<li class="active">
+							<a href="/profile" target="myframe">
+							<i class="glyphicon glyphicon-home"></i>
+							Overview</a>
+						</li>
+						<li>
+							<a href="order.html" target="myframe">
+							<i class="glyphicon glyphicon-user"></i>
+							Your Order</a>
+						</li>
+						<li>
+							<a href="help.html"  target="myframe">
+							<i class="glyphicon glyphicon-flag"></i>
+							Help</a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="profile-content">
+			   <div class="mb-3 row">
+               <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+               <div class="col-sm-10">
+                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+               </div>
+             </div>
+             <div class="mb-3 row">
+               <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+               <div class="col-sm-10">
+                 <input type="password" class="form-control" id="inputPassword">
+               </div>
+             </div>
+             <div class="mb-3 row">
+               <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control" id="inputAddress"  value="Address Example">
+               </div>
+             </div>
+             <div class="mb-3 row">
+               <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
+               <div class="col-sm-10">
+                 <input type="text" class="form-control" id="inputPhoneNumber" value="0000-01111">
+               </div>
+             </div>
+             <button type="button" class="btn btn-outline-secondary">Cancel</button>
+           <button type="button" class="btn btn-outline-success">Save</button>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<br>
+<br>
+	</div>
+   <%- include ../partials/footer %>
