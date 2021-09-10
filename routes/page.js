@@ -84,15 +84,26 @@ router.delete('/delete/:id', function(req, res){
 })
 
 
-// // GET Add Item Route
-// router.get('/addCart/:id', function(req, res){
-//   res.render('pages/addCart')
-// })
+/* GET Cart Items . */
+router.get('/', function(req, res, next) {
+ 
+  Item.find({}, function(err, items){
+    if (err) {
+      console.log(err)
+    } else {
+      res.render('pages/cart', { carts: [...carts] });
+      
+    }
+  })
+});
 
 // POST Add Item to Cart Route
 router.post('/addCart/:id', function(req, res){
   var cart = new Cart({
-    product_id: req.params.id
+    productID:req.params.id,
+    productName: req.body.productName,
+    price: req.body.price,
+    quantity: req.body.quantity
   });
 
   

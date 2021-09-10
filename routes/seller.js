@@ -3,6 +3,7 @@ var router = express.Router();
 
 // Bring in Models
 let Item = require('../models/item')
+let Cart = require('../models/cart')
 
 /* GET Items . */
 router.get('/', function(req, res, next) {

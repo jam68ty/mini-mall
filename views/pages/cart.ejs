@@ -30,51 +30,39 @@
                                                  </tr>
                                              </thead>
                                              <tbody>
+                                                <% carts.forEach(function(Cart){ %>
                                                  <tr>
                                                      <td>
                                                          <figure class="itemside align-items-center">
                                                              <div class="aside"><img src="https://intl.rakuten-static.com/b/tw/assets/channel/know_how/img/fashion-skirt/1141e6ad922c600c73739d.jpg" class="card-img-top"></div>
-                                                             <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Skirt</a>
+                                                             <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true"><%= Cart.productName %></a>
                                                                  
                                                              </figcaption>
                                                          </figure>
                                                      </td>
-                                                     <td> <select class="form-control">
+                                                     <td> <select name="number" id="number" onchange="print_value();" class="form-control">
                                                              <option>1</option>
                                                              <option>2</option>
                                                              <option>3</option>
                                                              <option>4</option>
                                                          </select> </td>
                                                      <td>
-                                                         <div class="price-wrap"> <p class="price">$200</var></div>
+                                                         <div class="price-wrap"> <p class="price" ><%= Cart.price %></var></div>
+                                                        
                                                      </td>
-                                                     <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light" data-abc="true"> Remove</a> </td>
+                                                     <td class="text-right d-none d-md-block"> 
+                                                        <a href="#" class="deleteCart" data-id="<%= Cart._id%>">Remove</a>
                                                  </tr>
-                                                 <tr>
-                                                     <td>
-                                                         <figure class="itemside align-items-center">
-                                                             <div class="aside"><img src="https://www.yuting.idv.tw/OneBoyInc/OneGirl/21031826GY-F/medium/G40813A.jpg" class="card-img-top"></div>
-                                                             <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Pants</a>
-                                                                 
-                                                             </figcaption>
-                                                         </figure>
-                                                     </td>
-                                                     <td> <select class="form-control">
-                                                             <option>1</option>
-                                                             <option>2</option>
-                                                             <option>3</option>
-                                                             <option>4</option>
-                                                         </select> </td>
-                                                     <td>
-                                                         <div class="price-wrap"> <p class="price">$300</p> </div>
-                                                     </td>
-                                                     <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light btn-round" data-abc="true"> Remove</a> </td>
-                                                 </tr>
+                                                <% }) %>
+                                                 
                                              </tbody>
                                          </table>
                                      </div>
                                  </div>
                              </aside>
+
+
+
                              <aside class="col-lg-3">
                                  <div class="card mb-3">
                                      <div class="card-body">
@@ -87,9 +75,14 @@
                                  </div>
                                  <div class="card">
                                      <div class="card-body">
+                                        <dl class="dlist-align">
+                                            <dt>Total quantity:</dt>
+                                            <div id="result"></div>
+                                        </dl>
                                          <dl class="dlist-align">
                                              <dt>Total price:</dt>
                                              <dd class="text-right ml-3">$500</dd>
+                                             <div id="result" onload="print_value()"></div>
                                          </dl>
                                          <dl class="dlist-align">
                                              <dt>Discount:</dt>
@@ -109,7 +102,15 @@
          </div>
      </div>
  </div>
-
+ <script>
+    document.getElementById("result").innerHTML += document.getElementById("number").value
+    function print_value() {
+        document.getElementById("result").innerHTML = document.getElementById("number").value
+    }
+    
+    
+    </script>
+     
 
  </div>
  <%- include ../partials/footer %>
