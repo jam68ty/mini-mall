@@ -5,22 +5,22 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Product Name</th>
-            <th scope="col">Amount</th>
             <th scope="col">Price</th>
+            <th scope="col">Amount</th>
             <th scope="col">Edit/Delete</th>
           </tr>
         </thead>
         <tbody>
-          <% pages.forEach(function(Item){ %>
+          <% items.forEach(function(Item){ %>
           <tr>
             <th scope="row"><%= Item._id %></th>
             <td><%= Item.productName %></td>
             <td><%= Item.price %></td>
             <td><%= Item.amount %></td>
             <td>
-                <button type="button" class="btn btn-outline-success"  onclick="location.href='/pages/edit/<%= Item._id%>'">Edit</button>
-                <button type="button" class="btn btn-outline-danger" class="deletePost" data-id="<%= Item.id%>" >Delete</button>
-            </td>
+                <a id="editItem" href="/pages/seller/edit/<%= Item._id%>">Edit</a> / 
+                <a href="#" class="deletePost" data-id="<%= Item._id%>">Delete</a>
+              </td>
           </tr>
           <% }) %> 
           
@@ -28,8 +28,7 @@
       </table> 
 
      
-    
-     
+      
     
         
         
@@ -70,17 +69,15 @@
     </div>
     </div>
 
-</div>
+    
+
 <script>
 	// Get the modal
 	var modal = document.getElementById("myModal");
-	
 	// Get the button that opens the modal
 	var btn = document.getElementById("addItem");
-	
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
-	
 	// When the user clicks the button, open the modal 
 	btn.onclick = function() {
 	  modal.style.display = "block";
@@ -95,7 +92,8 @@
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 		modal.style.display = "none";
-	  }
+  }
 	}
+  
 	</script>
 <%- include ../partials/footer %>

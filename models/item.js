@@ -7,11 +7,11 @@ let itemSchema = mongoose.Schema({
     required: true
   },
   price: {
-    type: Number,
+    type: String,
     required: true
   },
   amount:{
-    type: Number,
+    type: String,
     required: true
   }
   

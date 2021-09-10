@@ -4,16 +4,15 @@ var router = express.Router();
 
 // Bring in Models
 let Item = require('../models/item')
+let Cart = require('../models/cart')
 
 /* GET Items . */
 router.get('/', function(req, res, next) {
- 
-  Item.find({}, function(err, pages){
+  Item.find({}, function(err, items){
     if (err) {
       console.log(err)
     } else {
-      res.render('pages/index', { pages: [...pages] });
-      
+      res.render('pages/index', { items: [...items] });
     }
   })
 });
@@ -26,7 +25,6 @@ router.get('/add', function(req, res){
 // POST Add Item Route
 router.post('/add', function(req, res){
   var item = new Item({
-    id: req.body.id,
     productName: req.body.productName,
     price: req.body.price,
     amount: req.body.amount
@@ -49,22 +47,22 @@ router.post('/add', function(req, res){
 
 // Get Edit Form
 router.get('/edit/:id', function(req,res){
-  Item.findById(req.params.id, function(err, pages){
+  Item.findById(req.params.id, function(err, items){
     res.render('pages/editPost',{
-      pages: pages
+      items: items
     })
   })
 })
 
-//Item Edit Route
+//Post Edit Route
 router.post('/edit/:id', function(req, res){
   let item = {}
   item.productName = req.body.productName
   item.price = req.body.price
-  item.amount = req.body.amount
+  item.amount=req.body.amount
 
   let query = { _id: req.params.id }
-  Item.update(query, pages, function(err){
+  Item.update(query, item, function(err){
     if(err){
       console.log(err)
       return
@@ -74,19 +72,40 @@ router.post('/edit/:id', function(req, res){
   })
 })
 
-// // DELETE Route
-// router.delete('/delete/:id', function(req, res){
-//   let query = { _id: req.params.id}
-//   Post.remove(query, function(err){
-//     if(err){
-//       console.log()
-//     }
-//     res.send('Success')
-//   })
+// DELETE Route
+router.delete('/delete/:id', function(req, res){
+  let query = { _id: req.params.id}
+  Item.remove(query, function(err){
+    if(err){
+      console.log()
+    }
+    res.send('Success')
+  })
+})
+
+
+// // GET Add Item Route
+// router.get('/addCart/:id', function(req, res){
+//   res.render('pages/addCart')
 // })
 
+// POST Add Item to Cart Route
+router.post('/addCart/:id', function(req, res){
+  var cart = new Cart({
+    product_id: req.params.id
+  });
 
-
-
+  
+  cart.save(function(err, resp) {
+    if (err) {
+      console.log(err);
+      res.send({
+        message: 'something went wrong'
+      });
+    } else {
+      res.redirect('/pages')
+    }
+  });
+})
 
 module.exports = router;

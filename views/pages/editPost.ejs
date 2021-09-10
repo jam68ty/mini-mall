@@ -3,18 +3,18 @@
 <a href="/pages" class="btn btn-lg btn-default">Back To Index</a>
 <h1>Update Item</h1>
 
-<form method='POST', action='/pages/edit/<%= Item._id%>'>
+<form method='POST', action='/pages/edit/<%= items._id%>'>
 <div id="form-group">
   <label>Name</label>
-  <input name='title' type="text" class="form-control" value="<%= Item.productName %>">
+  <input name='title' type="text" class="form-control" value="<%= items.productName %>">
 </div>
 <div id="form-group">
   <label>Price</label>
-  <input name='body' type="number" class="form-control" value="<%= Item.price %>">
+  <input name='body' type="number" class="form-control" value="<%= items.price %>">
 </div>
 <div id="form-group">
   <label>Amount</label>
-  <input name='body' type="number" class="form-control" value="<%= Item.amount %>">
+  <input name='body' type="number" class="form-control" value="<%= items.amount %>">
 </div>
 <br>
 <input value='Submit' type="Submit" class="btn btn-primary">

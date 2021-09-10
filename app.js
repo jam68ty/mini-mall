@@ -11,7 +11,6 @@ var index = require('./routes/index');
 var account = require('./routes/account');
 var cart = require('./routes/cart');
 var seller = require('./routes/seller');
-var login = require('./routes/login');
 
 
 
@@ -41,7 +40,6 @@ app.use('/', index);
 let pages = require('./routes/page')
 
 app.use('/pages', pages);
-app.use('/pages/login',login);
 app.use('/pages/account',account);
 app.use('/pages/seller',seller);
 app.use('/pages/cart',cart);

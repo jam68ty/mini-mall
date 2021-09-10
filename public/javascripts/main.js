@@ -8,11 +8,11 @@ function deletePost(){
   if(confirmation){
     $.ajax({
       type: 'DELETE',
-      url: '/posts/delete/' + $(this).data('id')
+      url: '/pages/delete/' + $(this).data('id')
     }).done(function(response){
-      window.location.replace('/posts')
+      window.location.replace('/pages')
     })
-    window.location.replace('/posts')
+    window.location.replace('/pages')
 
   } else {
     return false;
